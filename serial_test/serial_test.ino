@@ -35,7 +35,7 @@ char str[CMD_BUFF_LEN];
 uint8_t idx = 0; // Reading index
 
 uint8_t state = B_STATE; // Default state
-int delay_t = DEFAULT_DELAY; // Default printing delay
+int delay_t = DEFAULT_DELAY; // Default blinking delay
 unsigned long prev_time;
 
 
@@ -71,7 +71,7 @@ void loop() {
       // Determine nature of the command
       state = interpret(str[0]);
       
-      // strtol(string, Ref pointer, Base[Hex-->16])
+      // strtol(char*, Ref pointer, Base[Decimal-->10, Hex-->16, ...])
       delay_t = strtol(str+1, NULL, 10); // str+1 --> exclude the first char
       /* Some input checking could've been done here (like b15f2 --> invalid) */
 
@@ -115,28 +115,20 @@ void loop() {
 
 uint8_t interpret(char c){
   switch(c){
-    case 'b':
-      return B_STATE;
-      break;
+    case 'b': return B_STATE;
 
-    case 'o':
-      return O_STATE;
-      break;
+    case 'o': return O_STATE;
 
-    case 'f':
-      return F_STATE;
-      break;
+    case 'f': return F_STATE;
 
-    case 'h':
-      return H_STATE;
-      break;
+    case 'h': return H_STATE;
 
     default: Serial.println("UNKNOWN");
   }
-  return state;
+  return state; // Don't change anything
 }
 
 void toggle_led(){
-  // Toggle the state of the LED pin
+  // Toggle the state of the LED pin (write the NOT of the current state to the LED pin)
   digitalWrite(LED_PIN, !digitalRead(LED_PIN));
 }
