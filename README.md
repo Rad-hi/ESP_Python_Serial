@@ -4,11 +4,11 @@ This is a tutorial for how to make an **ESP** (no reason it won't work on an **A
 
 Watch the first YouTube video: [Python to ESP32 communication via serial [Part 1] - Getting started](https://youtu.be/I-3cRo7lId8)
 
-<img=src"images/Serial_part1.png" width=640>
+<img src="images/Serial_part1.png" width=640>
 
 Watch the second YouTube video: [Python to ESP32 communication via serial [Part 2] - Useful application](https://youtu.be/Jr79o_28tSY)
 
-<img=src"images/Serial_part2.png" width=640>
+<img src="images/Serial_part2.png" width=640>
 
 ---
 
